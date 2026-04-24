@@ -6,9 +6,9 @@ import React from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 // importing our app components.
-import Card from './card'
-import UpdateProfile from './updateProfile';
-import NavigationBar from './navbar';
+import Card from './components/card'
+import UpdateProfile from './components/updateProfile';
+import NavigationBar from './components/navbar';
 import Employees from './pages/employees';
 import Home from './pages/home';
 

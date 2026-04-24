@@ -1,17 +1,23 @@
-import React, { useState } from 'react';  // don't even know if this is necessary.
+import React, { useState, } from 'react';  // don't even know if this is necessary.
 import ReactDOM from 'react-dom/client';
 // the above two are important to ensure that we can use React and render our components to the DOM.
 
-// imorting uuid to generate unique keys for our list items.
-// import { v4 as uuidv4 } from 'uuid';
+// gsap animation
+
 
 // importing our app components.
-import Card from '../card'
-import UpdateProfile from '../updateProfile';
-import NavigationBar from '../navbar';
+import Card from '../components/card'
+import UpdateProfile from '../components/updateProfile';
+import NavigationBar from '../components/navbar';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap'
 
 
 function Employees(){
+    useGSAP(()=>{
+        gsap.from('#cd', {y: 50, opacity:0, stagger: 0.2})
+        gsap.from('#ap', {y: 20, opacity: 0, delay: 1, ease: 'bounce', duration: 1})
+    }, [])
     const [profiles, setProfiles] = useState([
         {id: 1, name: 'Jonathan', image: '/bg-dev.jpeg', description: 'Hey there, I\'m Jonathan, the senior software developer here. I\'m 26 years old with 10 years of experience. I look forward to working with you.'},
         {id: 2, name: 'Michael', image: '/bg-dev.jpeg', description: 'Hey there, it\'s me Michael, the data analyst with 5 years of experience. I look forward to working with you.'},
@@ -43,12 +49,12 @@ function Employees(){
                 {/* because the arrow fn below uses curly braces, we explicitly need to use the return keyword. */}
                 {profiles.map((user)=>{
                     return(
-                        <div className="col-12 col-lg-6">
+                        <div id='cd' className="col-12 col-lg-6">
                             <Card id={user.id} name={user.name} image={user.image} description={user.description} updateProfile={updateProfile} key={user.id}/>
                         </div>
                     )
                 })}
-                <div className="container mt-2">
+                <div id='ap' className="container mt-2">
                     <UpdateProfile newProfile={newProfile}/>
                 </div>
             </div>
