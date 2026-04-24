@@ -11,17 +11,20 @@ import UpdateProfile from './components/updateProfile';
 import NavigationBar from './components/navbar';
 import Employees from './pages/employees';
 import Home from './pages/home';
-
+import Layout from './components/layout'
+import Pricing from './pages/pricing'
 
 function App(){
     return (
         <BrowserRouter> {/* this must wrap the entire app to ensure that all components have access to the routing functionality. */}
-            <NavigationBar>
                 <Routes>
-                    <Route path='/' element={<Home />}/>
-                    <Route path='/employees' element={<Employees />}/>
+                    <Route path='/' element={<Layout />}>
+                        {/* // this is basically the outlet we defined at layout */}
+                        <Route index element={<Home />} />
+                        <Route path='employees' element={<Employees />} />
+                        <Route path='pricing' element={<Pricing />} />
+                    </Route>
                 </Routes>
-            </NavigationBar>
         </BrowserRouter>
     )
 }
