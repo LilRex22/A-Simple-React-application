@@ -13,6 +13,7 @@ import Employees from './pages/employees';
 import Home from './pages/home';
 import Layout from './components/layout'
 import Pricing from './pages/pricing'
+import Packages from './pages/packages'
 
 function App(){
     return (
@@ -23,6 +24,7 @@ function App(){
                         <Route index element={<Home />} />
                         <Route path='employees' element={<Employees />} />
                         <Route path='pricing' element={<Pricing />} />
+                        <Route path='pricing/:param' element={<Packages />} />
                     </Route>
                 </Routes>
         </BrowserRouter>
